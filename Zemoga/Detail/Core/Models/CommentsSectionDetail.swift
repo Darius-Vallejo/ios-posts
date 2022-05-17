@@ -6,9 +6,16 @@
 //
 
 import Foundation
+import UIKit
+
+struct CommentsSectionDetail: AnySectionWithModel {
+    typealias Model = [Comment]
+
+    var model: [Comment]
+}
 
 extension AnySectionWithModel where Model == [Comment] {
-    func tableView(numberOfRowsInSection section: Int) -> Int {
+    func numberOfRowsInSection() -> Int {
         return model.count
     }
      
@@ -18,9 +25,12 @@ extension AnySectionWithModel where Model == [Comment] {
           for: indexPath) as? CommentViewCell else {
             return UITableViewCell()
           }
+
+        let comment = model[indexPath.row]
+        cell.nameLabel.text = comment.name.capitalized
+        cell.emailLabel.text = comment.email.lowercased()
+        cell.bodyLabel.text = comment.body
         
-        let post = model[indexPath.row]
-//        cell.titleLabel.text = post?.title ?? ""
         return cell
     }
 }

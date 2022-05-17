@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum PostsUpdater {
+    case newPostsLoaded(_ posts: [Post])
+    case newComentsLoaded(_ comments: [Comment])
+    case newUserLoaded(_ user: User?)
+    case updatePost(post: Post)
+}

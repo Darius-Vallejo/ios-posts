@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct ServicesDefinitions {
     static let posts = "https://jsonplaceholder.typicode.com/posts"
     
@@ -16,6 +15,6 @@ struct ServicesDefinitions {
     }
     
     static let users: (_ userId: Int) -> String = {
-        return "https://jsonplaceholder.typicode.com/users?userId=\($0)"
+        return "https://jsonplaceholder.typicode.com/users?id=\($0)"
     }
 }

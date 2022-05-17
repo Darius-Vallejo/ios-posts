@@ -6,30 +6,108 @@
 //
 
 import XCTest
+import Combine
+@testable import Zemoga
 
 class PostsInteractorTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    var interactor: PostsInteractor!
+    private var cancellables: Set<AnyCancellable> = []
+    
+    override func setUp() {
+        super.setUp()
+        interactor = PostsInteractor(services: FakePostsServices())
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testPosts_withoutLoadPosts_postsAreNotLoaded() {
+        let posts = interactor.posts
+        XCTAssertEqual(posts, [])
     }
+    
+    func testPosts_callingLoadPosts_postsAreLoaded() {
+        let expec = expectation(description: "Calling load Posts")
+        var cancellable: AnyCancellable?
+        cancellable = interactor
+            .postsPublisher
+            .replaceError(with: .newPostsLoaded([]))
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {
+                if case let .newPostsLoaded(posts) = $0, !posts.isEmpty {
+                    expec.fulfill()
+                    cancellable?.cancel()
+                }
+            })
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        interactor.loadPosts()
+        waitForExpectations(timeout: 5, handler: nil)
+        let posts = interactor.posts
+        XCTAssertEqual(posts.count, 2)
     }
+    
+    func testListUpdater_updatingCurrentList_likedPostsIsUpdated() {
+        interactor.loadPosts()
+        var postUpdated = interactor.posts[0]
+        postUpdated.isFavorite = true
+        let expec = expectation(description: "Calling Posts updater")
+        var cancellable: AnyCancellable?
+        cancellable = interactor
+            .postsPublisher
+            .replaceError(with: .newPostsLoaded([]))
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {
+                if case let .newPostsLoaded(posts) = $0, !posts.isEmpty {
+                    expec.fulfill()
+                    cancellable?.cancel()
+                }
+            })
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        interactor.updateCurrentList(by: postUpdated)
+        waitForExpectations(timeout: 3, handler: nil)
+        XCTAssertTrue(interactor.posts[0].isFavorite ?? false)
     }
+    
+    func testListRemover_removeSpecificPost_postRemoved() {
+        interactor.loadPosts()
+        let postToRemove = interactor.posts[0]
+        let expec = expectation(description: "Calling Posts updater")
+        var cancellable: AnyCancellable?
+        cancellable = interactor
+            .postsPublisher
+            .replaceError(with: .newPostsLoaded([]))
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {
+                if case let .newPostsLoaded(posts) = $0, !posts.isEmpty {
+                    expec.fulfill()
+                    cancellable?.cancel()
+                }
+            })
 
+        interactor.removePostFromList(post: postToRemove)
+        waitForExpectations(timeout: 3, handler: nil)
+        let postFound = interactor.posts.first(where: {
+            return $0 == postToRemove
+        })
+        XCTAssertNil(postFound)
+    }
+    
+    func testListRemover_removeall_postListIsEmpty() {
+        interactor.loadPosts()
+        let expec = expectation(description: "Calling Posts remover")
+        var cancellable: AnyCancellable?
+        cancellable = interactor
+            .postsPublisher
+            .replaceError(with: .newPostsLoaded([]))
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {
+                if case .newPostsLoaded = $0 {
+                    expec.fulfill()
+                    cancellable?.cancel()
+                }
+            })
+
+        interactor.removeAll()
+        waitForExpectations(timeout: 3, handler: nil)
+        XCTAssertTrue(interactor.posts.isEmpty)
+    }
+    
 }

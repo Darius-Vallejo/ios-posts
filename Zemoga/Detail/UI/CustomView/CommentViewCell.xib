@@ -10,27 +10,27 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UserTableViewCell" customModule="Zemoga" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CommentViewCell" customModule="Zemoga" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="485" height="168"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkh-06-014">
-                    <rect key="frame" x="20" y="10" width="445" height="18"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkh-06-014">
+                    <rect key="frame" x="20" y="10" width="445" height="19.5"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="18" id="wLF-0x-iKk"/>
+                        <constraint firstAttribute="height" priority="250" constant="18" id="wLF-0x-iKk"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbT-qK-E5h">
-                    <rect key="frame" x="20" y="68" width="445" height="56"/>
+                    <rect key="frame" x="20" y="53.5" width="445" height="70.5"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJK-l0-MBK">
-                    <rect key="frame" x="20" y="47" width="445" height="18"/>
+                    <rect key="frame" x="20" y="32.5" width="445" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="iJE-xa-LwM"/>
                     </constraints>
@@ -44,7 +44,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="mkh-06-014" secondAttribute="trailing" constant="20" id="4d0-0m-kgb"/>
                 <constraint firstItem="pJK-l0-MBK" firstAttribute="leading" secondItem="mkh-06-014" secondAttribute="leading" id="6Iv-Zw-J3E"/>
-                <constraint firstItem="pJK-l0-MBK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="3" id="Px9-88-NSR"/>
+                <constraint firstItem="pJK-l0-MBK" firstAttribute="top" secondItem="mkh-06-014" secondAttribute="bottom" constant="3" id="QFG-Rj-pn5"/>
                 <constraint firstItem="mkh-06-014" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="S9F-yS-dsj"/>
                 <constraint firstItem="mkh-06-014" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="ScT-BI-lnB"/>
                 <constraint firstItem="CbT-qK-E5h" firstAttribute="leading" secondItem="pJK-l0-MBK" secondAttribute="leading" id="WcF-oV-7fV"/>
@@ -55,9 +55,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="bodyLabel" destination="CbT-qK-E5h" id="rKd-Wd-Z7q"/>
-                <outlet property="emailLabel" destination="pJK-l0-MBK" id="8t5-E6-O4C"/>
-                <outlet property="nameLabel" destination="mkh-06-014" id="xaj-OV-6s8"/>
+                <outlet property="bodyLabel" destination="CbT-qK-E5h" id="BbV-dq-quc"/>
+                <outlet property="emailLabel" destination="pJK-l0-MBK" id="xX9-T6-Uib"/>
+                <outlet property="nameLabel" destination="mkh-06-014" id="dpI-wU-yaz"/>
             </connections>
             <point key="canvasLocation" x="271.73913043478262" y="-121.875"/>
         </view>

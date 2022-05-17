@@ -4,8 +4,6 @@
 A Swift iOS app showcasing my basic software skills building an iOS product. 
 
 
-
-
 ## Features
 
 - Data models decoded by Codable
@@ -53,3 +51,4 @@ These practices are explained in [Art of unit testing by Osherove](https://www.a
 - Use Repository Pattern through interactor
 - Unit tests for the DetailInteractor's business logic
 
+> :warning: **If you are using dark mode**: Be very careful the favorite icon could be hinde!

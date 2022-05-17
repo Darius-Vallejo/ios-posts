@@ -8,4 +8,13 @@
 import Foundation
 import UIKit
 
-class PostTableViewCell: UICollectionViewCell {
+class PostTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var favoriteImageView: UIImageView!
+    
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+}
