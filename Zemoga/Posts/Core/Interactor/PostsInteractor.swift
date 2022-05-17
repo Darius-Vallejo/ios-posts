@@ -30,14 +30,18 @@ class PostsInteractor: IPostsInteractor {
         postsPublisher
             .sink(receiveCompletion: {
                 print($0)
-            }, receiveValue: { [unowned self] in
-                if case .newPostsLoaded(let posts) = $0 {
-                    let sortedPost = posts.sorted {
-                        return $0.isFavorite ?? false && !($1.isFavorite ?? false)
-                    }
-                    self.posts = sortedPost
-                }
+            }, receiveValue: { [weak self] in
+                self?.postsHanlder(for: $0)
             }).store(in: &cancellables)
+    }
+    
+    private func postsHanlder(for updater: PostsUpdater) {
+        if case .newPostsLoaded(let posts) = updater {
+            let sortedPost = posts.sorted {
+                return $0.isFavorite ?? false && !($1.isFavorite ?? false)
+            }
+            self.posts = sortedPost
+        }
     }
     
     func loadPosts() {
@@ -48,8 +52,11 @@ class PostsInteractor: IPostsInteractor {
                 return PostsUpdater.newPostsLoaded($0)
             }
             .eraseToAnyPublisher()
-            .assign(to: \.value, on: postsPublisher)
-            .store(in: &cancellables)
+            .sink(receiveValue: { [weak self] in
+                self?.postsHanlder(for: $0)
+                self?.postsPublisher.send($0)
+            }).store(in: &cancellables)
+            
     }
     
     private func postIndexFromList(_ post: Post) -> Int? {

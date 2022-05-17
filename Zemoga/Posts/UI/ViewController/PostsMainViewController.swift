@@ -24,6 +24,7 @@ class PostsMainViewController: UIViewController, Alertable {
                                    bundle: nil)
             postTableView.register(nibForCell,
                                    forCellReuseIdentifier: String(describing: PostTableViewCell.self))
+            setupTable()
         }
     }
     
@@ -31,6 +32,7 @@ class PostsMainViewController: UIViewController, Alertable {
         self.presenter = presenter
         super.init(nibName: String(describing: PostsMainViewController.self),
                    bundle: nil)
+        setupForRefreshControl()
     }
     
     required init?(coder: NSCoder) {
@@ -39,13 +41,12 @@ class PostsMainViewController: UIViewController, Alertable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.loadPosts()
-        setupTable()
         title = "Posts"
         deleteAllButton.layer.cornerRadius = 5
         deleteAllButton.layer.masksToBounds = true
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
+        presenter.loadPosts()
     }
     
     private func setupTable() {
@@ -54,7 +55,11 @@ class PostsMainViewController: UIViewController, Alertable {
         postTableView.rowHeight = UITableView.automaticDimension
         postTableView.estimatedRowHeight = 600
         postTableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(reloadPostList), for: .valueChanged)
+    }
+    
+    private func setupForRefreshControl() {
+        refreshControl.addTarget(self,
+                                 action: #selector(reloadPostList), for: .valueChanged)
         refreshControl.tintColor = UIColor(red: 0.25, green: 0.72, blue: 0.85, alpha: 1.0)
         refreshControl.attributedTitle = NSAttributedString(string: "Fetching posts data", attributes: nil)
     }

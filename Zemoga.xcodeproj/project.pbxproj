@@ -26,6 +26,7 @@
 		79B0E7F8282CB81E007F24E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79B0E7F6282CB81E007F24E1 /* LaunchScreen.storyboard */; };
 		79B0E80D282CB81E007F24E1 /* ZemogaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B0E80C282CB81E007F24E1 /* ZemogaUITests.swift */; };
 		79B0E80F282CB81E007F24E1 /* ZemogaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B0E80E282CB81E007F24E1 /* ZemogaUITestsLaunchTests.swift */; };
+		79DE5B3B2833527A002A159D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 79DE5B3A2833527A002A159D /* README.md */; };
 		79E89611283091CB0079A805 /* PostsUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E89610283091CB0079A805 /* PostsUpdater.swift */; };
 		79E89614283092600079A805 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E89613283092600079A805 /* Comment.swift */; };
 		79E896162830926D0079A805 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E896152830926D0079A805 /* User.swift */; };
@@ -44,7 +45,6 @@
 		79E8963328332B410079A805 /* PostsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E8963228332B410079A805 /* PostsInteractorTests.swift */; };
 		79E8963628332C530079A805 /* FakePostServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E8963528332C530079A805 /* FakePostServices.swift */; };
 		79E89639283337810079A805 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 79E89638283337810079A805 /* .swiftlint.yml */; };
-		79E8963B28334C6B0079A805 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 79E8963A28334C6B0079A805 /* README.md */; };
 		79ED4093282CB92D00614A5E /* PostsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79ED4092282CB92D00614A5E /* PostsInteractor.swift */; };
 		79ED4099282CB98D00614A5E /* PostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79ED4098282CB98D00614A5E /* PostsPresenter.swift */; };
 		79ED409B282CB99F00614A5E /* PostsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79ED409A282CB99F00614A5E /* PostsRouter.swift */; };
@@ -94,6 +94,7 @@
 		79B0E808282CB81E007F24E1 /* ZemogaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZemogaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B0E80C282CB81E007F24E1 /* ZemogaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaUITests.swift; sourceTree = "<group>"; };
 		79B0E80E282CB81E007F24E1 /* ZemogaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		79DE5B3A2833527A002A159D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		79E89610283091CB0079A805 /* PostsUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsUpdater.swift; sourceTree = "<group>"; };
 		79E89613283092600079A805 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		79E896152830926D0079A805 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -112,7 +113,6 @@
 		79E8963228332B410079A805 /* PostsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsInteractorTests.swift; sourceTree = "<group>"; };
 		79E8963528332C530079A805 /* FakePostServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePostServices.swift; sourceTree = "<group>"; };
 		79E89638283337810079A805 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		79E8963A28334C6B0079A805 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		79ED4092282CB92D00614A5E /* PostsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsInteractor.swift; sourceTree = "<group>"; };
 		79ED4098282CB98D00614A5E /* PostsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsPresenter.swift; sourceTree = "<group>"; };
 		79ED409A282CB99F00614A5E /* PostsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRouter.swift; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 				79B0E7E8282CB81B007F24E1 /* AppDelegate.swift */,
 				79B0E7EA282CB81B007F24E1 /* SceneDelegate.swift */,
 				79737BE6282F3DDC00A71494 /* .swiftlint.yml */,
-				79E8963A28334C6B0079A805 /* README.md */,
+				79DE5B3A2833527A002A159D /* README.md */,
 				79B0E7F4282CB81E007F24E1 /* Assets.xcassets */,
 				79B0E7F6282CB81E007F24E1 /* LaunchScreen.storyboard */,
 				79B0E7F9282CB81E007F24E1 /* Info.plist */,
@@ -515,13 +515,13 @@
 			files = (
 				79E8961F28316E7C0079A805 /* CommentViewCell.xib in Resources */,
 				79E8961D28316E660079A805 /* UserTableViewCell.xib in Resources */,
-				79E8963B28334C6B0079A805 /* README.md in Resources */,
 				79737BEB282F541E00A71494 /* PostTableViewCell.xib in Resources */,
 				79E89631283300D10079A805 /* PostDetailTableViewCell.xib in Resources */,
 				79737BE7282F3DDC00A71494 /* .swiftlint.yml in Resources */,
 				79737BFE282F7D2500A71494 /* DetailMainViewController.xib in Resources */,
 				79B0E7F8282CB81E007F24E1 /* LaunchScreen.storyboard in Resources */,
 				79737BE5282F3CCD00A71494 /* PostsMainViewController.xib in Resources */,
+				79DE5B3B2833527A002A159D /* README.md in Resources */,
 				79B0E7F5282CB81E007F24E1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
